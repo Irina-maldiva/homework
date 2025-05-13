@@ -1,0 +1,25 @@
+body {
+    color: white;
+    background-color: black;
+    height: 5000px;
+}
+
+.block_1 {
+    min-height: 100px;
+    background-color: white;
+    border-radius: 5px;
+    position: fixed;
+    left: 50%;
+    bottom: 100px;
+    right: 50px;
+}
+
+.block_2 {
+    background-color: red;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    position: absolute;
+    bottom: 50%;
+    left: 10%;
+}
