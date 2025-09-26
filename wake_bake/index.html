@@ -50,7 +50,7 @@
                                 <div class="hero__dot"></div>
                                 <p>26.06.2023</p>
                             </div>
-                            <h1 class="hero__title">Научись печь торты и десерты с нуля</h1>
+                            <h1 class="hero__title title">Научись печь торты и десерты с нуля</h1>
                             <p class="hero__text">За 8 практических занятий ты получишь новые возможности
                                 для самореализации и любимое дело</p>
                             <div class="hero__control hero__control--mobile">
@@ -77,15 +77,70 @@
             </div>
         </header>
 
-
-
         <main class="main">
+            <section class="about">
 
+
+                <div class="conteiner">
+                    <div class="about__inner inner">
+                        <div class="about__img">
+                            <div class="about__img-img">
+                                <img src="image/content/grl_2.jpg" alt="Девушка держит торт в руках">
+                                <div class="about__present">
+                                    <button class="about__present-button" type="button"><img
+                                            src="image/icons/present.svg" alt=""></button>
+                                    <p>Нажми на подарок, чтобы получить наш фирменный рецепт</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about__text">
+                            <div class="about__text-text">
+                                <h2 class="about__title">
+                                    <span class="title">Наша школа — </span><br>это уютный дом для начинающих кондитеров
+                                </h2>
+                                <p>С нами ты погрузишься в удивительный мир кондитерского искусства, получишь новые
+                                    знания и профессиональные навыки! Обретёшь веру в свои силы, научишься приготовлению
+                                    разнообразных современных и классических десертов</p>
+                            </div>
+                            <div class="about__text-block">
+                                <div class="about__text-block-1">
+                                    <div class="about_hat">
+                                        <img src="image/icons/hat_1.svg" alt="">
+                                    </div>
+                                    <p>Живое общение с наставниками и одногруппниками</p>
+                                </div>
+                                <div class="about__text-block-2">
+                                    <div class="about_hat">
+                                        <img src="image/icons/hat_1.svg" alt="">
+                                    </div>
+                                    <p>Предоставление всех необходимых материалов</p>
+                                </div>
+                                <div class="about__text-block-3">
+                                    <div class="about_hat">
+                                        <img src="image/icons/hat_1.svg" alt="">
+                                    </div>
+                                    <p>Небольшие группы до 6 человек</p>
+                                </div>
+                                <div class="about__text-block-4">
+                                    <div class="about_hat">
+                                        <img src="image/icons/hat_1.svg" alt="">
+                                    </div>
+                                    <p>Большие аудитории для обучения</p>
+                                </div>
+                            </div>
+                            <div class="about__present about__present__mobile">
+                                <button class="about__present-button_mobile" type="button"><img src="image/icons/present.svg" alt=""></button>
+                                <p>Нажми на подарок, чтобы получить наш фирменный рецепт</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer class="footer">
             <div class="conteiner">
-                <div class="footer__inner">
+                <div class="footer__inner inner">
                     <div class="footer__nav-socials">
                         <div class="footer__logo-socials">
                             <a class="footer__logo" href="#">
@@ -170,6 +225,29 @@
         </footer>
 
     </div>
+    <div class="modal">
+        <div class="modal__inner">
+            <button class="modal__close" type="button">
+                <svg class="modal__close-img" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.75" y="0.75" width="22.5" height="22.5" rx="11.25" stroke="#E1D9E1" stroke-width="1.5" />
+                    <path
+                        d="M6.75781 17.2433L12.0008 12.0003L17.2438 17.2433M17.2438 6.75732L11.9998 12.0003L6.75781 6.75732"
+                        stroke="#E1D9E1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+            <img class="modal__img" src="image/decor/cupcake_1.png" alt="Капкейки">
+            <div class="modal__content">
+                <h3 class="modal__title title">Удиви своих близких вкусными капкейками</h3>
+                <p class="modal__text">Оставь свой e-mail, и мы вышлем рецепт на почту</p>
+                <form class="modal__form">
+                    <input class="modal__input" type="email" placeholder="E-mail">
+                    <p class="modal__form-text">Введите e-mail</p>
+                    <button class="button" type="submit">Получить подарок</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="js/fslightbox.js"></script>
     <script src="js/main.js"></script>
 </body>
