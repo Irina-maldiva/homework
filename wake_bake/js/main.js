@@ -1,58 +1,111 @@
-//-------------- burger-menu
+(function () {
 
-const burgerMenu = document.querySelector('.header__burger-menu');
-const navItem = document.querySelector('.nav__list');
-const body = document.querySelector('.body');
+    // Бургер
 
+    document.addEventListener('click', burgerInit)
 
-burgerMenu.addEventListener('click', function () {
-    body.classList.toggle('body--opened-menu')
-})
+    function burgerInit(e) {
 
-navItem.addEventListener('click', function (event) {
-    const clickedElement = event.target;
+        const burgerIcon = e.target.closest('.burger-icon')
+        const burgerNavLink = e.target.closest('.nav__link')
 
-    if (clickedElement.classList.contains('nav__link') && body.classList.contains('body--opened-menu')) {
-        body.classList.remove('body--opened-menu');
+        if (!burgerIcon && !burgerNavLink) return
+        if (document.documentElement.clientWidth > 900) return
+
+        if (!document.body.classList.contains('body--opened-menu')) {
+            document.body.classList.add('body--opened-menu')
+        } else {
+            document.body.classList.remove('body--opened-menu')
+        }
+
     }
-});
 
+    // Модалка
 
-//-------------- modal-window
-const presentButton = document.querySelector('.about__present-button');
-const presentButtonMobile = document.querySelector('.about__present-button_mobile');
-const modal = document.querySelector('.modal')
-const closeButton = document.querySelector('.modal__close')
+    const modal = document.querySelector('.modal')
+    const modalButton = document.querySelector('.about__img-button')
 
-function openModal() {
-    modal.classList.add('modal_open');
-    document.body.style.overflow = 'hidden';
-}
+    modalButton.addEventListener('click', openModal)
+    modal.addEventListener('click', closeModal)
 
-function closeModal (){
-    modal.classList.remove('modal_open');
-    document.body.style.overflow = '';
-}
-
-
-presentButton.addEventListener('click', function () {
-    openModal();
-})
-
-presentButtonMobile.addEventListener('click', function () {
-    openModal();
-})
-
-modal.addEventListener('click', function (event) {
-    const clickedElementModal = event.target;
-
-    if (clickedElementModal.classList.contains('modal') || clickedElementModal.classList.contains('modal__close-img') || clickedElementModal.classList.contains('modal__close')) {
-        closeModal ()
+    function openModal(e) {
+        e.preventDefault()
+        document.body.classList.toggle('body--opened-modal')
     }
-})
 
-document.addEventListener('keydown', event=> {
-    if (event.code ==='Escape') {
-        closeModal ()
+    function closeModal(e) {
+        e.preventDefault()
+
+        const target = e.target
+
+        if (target.closest('.modal__cancel') || target.classList.contains('modal')) {
+            document.body.classList.remove('body--opened-modal')
+        }
+
     }
-})
+
+    // Табы
+
+    const tabControls = document.querySelector('.tab-conrols')
+
+    tabControls.addEventListener('click', toggleTab)
+
+    function toggleTab(e) {
+
+        const tabControl = e.target.closest('.tab-conrols__link')
+
+        if (!tabControl) return
+        e.preventDefault()
+        if (tabControl.classList.contains('tab-conrols__link--active')) return
+
+        const tabContentID = tabControl.getAttribute('href')
+        const tabContent = document.querySelector(tabContentID)
+        const activeControl = document.querySelector('.tab-conrols__link--active')
+        const activeContent = document.querySelector('.tab-content--show')
+
+        if (activeControl) {
+            activeControl.classList.remove('tab-conrols__link--active')
+        }
+        if (activeContent) {
+            activeContent.classList.remove('tab-content--show')
+        }
+
+        tabControl.classList.add('tab-conrols__link--active')
+        tabContent.classList.add('tab-content--show')
+
+    }
+
+    // Аккордеон
+
+    const accordionLists = document.querySelectorAll('.accordion-list');
+
+    accordionLists.forEach(el => {
+
+        el.addEventListener('click', (e) => {
+
+            const accordionList = e.currentTarget
+            const accordionOpenedItem = accordionList.querySelector('.accordion-list__item--opened')
+            const accordionOpenedContent = accordionList.querySelector('.accordion-list__item--opened .accordion-list__content')
+
+            const accordionControl = e.target.closest('.accordion-list__control');
+            if (!accordionControl) return
+            const accordionItem = accordionControl.parentElement;
+            const accordionContent = accordionControl.nextElementSibling;
+
+            if (accordionOpenedItem && accordionItem != accordionOpenedItem) {
+                accordionOpenedItem.classList.remove('accordion-list__item--opened');
+                accordionOpenedContent.style.maxHeight = null;
+            }
+            accordionItem.classList.toggle('accordion-list__item--opened');
+
+            if (accordionItem.classList.contains('accordion-list__item--opened')) {
+                accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+            } else {
+                accordionContent.style.maxHeight = null;
+            }
+
+        });
+
+    });
+
+})()
